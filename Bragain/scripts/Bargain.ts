@@ -168,7 +168,7 @@ window.onload = function () {
    
     alert('before bid');
 
-    (<HTMLInputElement>document.getElementById("co")).onclick = function () {
+    (<HTMLInputElement>document.getElementById("co")).onclick =  function (){
         document.title = "Bidding";
        
         var customerRate = 0.145;

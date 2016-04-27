@@ -173,3 +173,4 @@ function Bid(amount, rate, ttl) {
 //      maxLimit: 500,
 //      timeToLive: 3600,
 //      bargainLimit :6      
+//# sourceMappingURL=Bargain.js.map
