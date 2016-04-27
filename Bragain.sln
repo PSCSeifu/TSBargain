@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bragain", "Bragain\Bragain.csproj", "{A89E15E2-F388-4462-809B-A69B7094B6DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bargain", "Bragain\Bargain.csproj", "{A89E15E2-F388-4462-809B-A69B7094B6DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
