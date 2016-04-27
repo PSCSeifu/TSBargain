@@ -216,7 +216,7 @@ function Bid(amount, rate, ttl) {
     (<HTMLInputElement>document.getElementById("camount")).value = amount;
     (<HTMLInputElement>document.getElementById("cttl")).value = ttl;
 }
-
+ 
 
   //offerId : 0,
   //      parentId : 1,
