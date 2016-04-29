@@ -3,20 +3,27 @@
 <head>
     <title></title>
 	<meta charset="utf-8" />
-    <script src="scripts/Bargain.js"></script>
-    <script src="scripts/jquery.js"></script>
+    <script src="scripts/Bargain.js"></script>    
+    <link href="scripts/site.css" rel="stylesheet" />
+    <script src="scripts/jquery-2.2.3.js"></script>
 </head>
 <body>
     <div id="main">
-        <div id="input">
+        <div id="controlboard">
+            <h2>Control Board</h2>
+            <input type="button" id="cs" value="Commerce Surface" />
             <input type="button" id="pb" value="Public Offer" />
             <input type="button" id="co" value="Counter Offer" />
             <input type="button" id="cb" value="Customer Bargain" />
             <input type="button" id="vb" value="Vendor Bargain" />
-
+        </div>     
+        <div id="staticvalues">
+            <div>
+                <label for="cmrate">Market Rate</label>
+                <input id="cmrate" type="text" value="0.36"/>
+            </div>
         </div>
-
-        <div id="output">
+        <div id="vendoroffer">
             <div>
                 <h3>Vendor Public Offer</h3>
             </div>
@@ -33,11 +40,7 @@
             <div>
                 <label for="rate">Rate </label>
                 <input id="rate" type="text" />
-            </div>
-            <div>
-                <label for="marketrate">MarketRate </label>
-                <input id="marketrate" type="text" />
-            </div>
+            </div>            
             <div>
                 <label for="minlimit">Minlimit </label>
                 <input id="minlimit" type="text" />
@@ -51,23 +54,19 @@
                 <input id="ttl" type="text" />
             </div>
             <div>
-                <input id="counteroffer" type="button" value="Bid" />
+                <input id="counteroffer" type="button" value="Publish" />
             </div>
         </div>
-        <div>
-            <h3>Customer Private Counter Offer</h3>
-        </div>
+        
         <div>
             <div>
-
+                <h3>Customer Private Counter Offer</h3>
+            </div>
+            <div>
                 <div>
                     <label for="crate">Counter Rate</label>
                     <input id="crate" type="text" />
-                </div>
-                <div>
-                    <label for="cmrate">Market Rate</label>
-                    <input id="cmrate" type="text" />
-                </div>
+                </div>              
                 <div>
                     <label for="crate">Offer Amount</label>
                     <input id="camount" type="text" />
@@ -76,37 +75,96 @@
                     <label for="crate">Time to Live</label>
                     <input id="cttl" type="text" />
                 </div>
+                <div>
+                    <input type="button" value="Bargain" />
+                </div>
             </div>
 
 
             <!--<table id="bragin">
-                <tr>
-                    <td>Counter Rate</td>
-                    <td>Market Rate</td>
-                    <td>Amount</td>
-                    <td>Ttl</td>
-                </tr>
-                <tr>
-                    <td><input id="crate" type="text" /></td>
-                    <td><input id="cmrate" type="text" /></td>
-                    <td><input id="camount" type="text" /></td>
-                    <td><input id="cttl" type="text" /></td>
-                </tr>
-            </table>-->
+            <tr>
+                <td>Counter Rate</td>
+                <td>Market Rate</td>
+                <td>Amount</td>
+                <td>Ttl</td>
+            </tr>
+            <tr>
+                <td><input id="crate" type="text" /></td>
+                <td><input id="cmrate" type="text" /></td>
+                <td><input id="camount" type="text" /></td>
+                <td><input id="cttl" type="text" /></td>
+            </tr>
+        </table>-->
             <!--<label for="crate">Rate</label>
-            <input id="crate" type="text" />
+        <input id="crate" type="text" />
 
 
-            <label for="camount">MarketRate</label>
-            <input id="camount" type="text" />
+        <label for="camount">MarketRate</label>
+        <input id="camount" type="text" />
 
-            <label for="cttl">Minlimit</label>
-            <input id="cttl" type="text" />-->
+        <label for="cttl">Minlimit</label>
+        <input id="cttl" type="text" />-->
         </div>
-    </div>
 
-    <div id="test" value="45"></div>
-    </div>
+        <div id="example" class="commercesurface">
+            <input type="button" id="toggleButton" value="Hide" />
+            <div id="offerpanel" class="offerpanel">
+                <div id="offer1" class="offerpanelitem">
+                    <div id="offerpanelelementname" class="offerpanelelementname">Vendor</div>
+                    <div id="firstcurrency" class="offerpanelelement"></div>
+                    <div id="secondcurrency" class="offerpanelelement"></div>
+                    <div id="rate" class="offerpanelelement"></div>
+                    <div id="amount" class="offerpanelelement"></div>
+                    <div id="marketrate" class="offerpanelelement"></div>
+                    <div id="minlimit" class="offerpanelelement"></div>
+                    <div id="maxlimit" class="offerpanelelement"></div>
+                    <div id="TimeToLive" class="offerpanelelement"></div>
+                </div>
+                <div id="offer2" class="offerpanelitem">
+                    <div id="offerpanelelementname" class="offerpanelelementname">Customer</div>
+                    <div id="firstcurrency" class="offerpanelelement"></div>
+                    <div id="secondcurrency" class="offerpanelelement"></div>
+                    <div id="rate" class="offerpanelelement"></div>
+                    <div id="amount" class="offerpanelelement"></div>
+                    <div id="marketrate" class="offerpanelelement"></div>
+                    <div id="minlimit" class="offerpanelelement"></div>
+                    <div id="maxlimit" class="offerpanelelement"></div>
+                    <div id="TimeToLive" class="offerpanelelement"></div>
+                </div>
+            </div>
+        </div>
+        <div id="surface1" class="commercesurface">
+            <input type="button" id="toggleButton" value="Hide" />
+            <div id="offerpanel" class="offerpanel">
+                <div id="offer1" class="offerpanelitem">
+                    <div id="offerpanelelementname21" class="offerpanelelementname">Vendor</div>
+                    <div id="firstcurrency21" class="offerpanelelement"></div>
+                    <div id="secondcurrency21" class="offerpanelelement"></div>
+                    <div id="rate21" class="offerpanelelement"></div>
+                    <div id="amount21" class="offerpanelelement"></div>
+                    <div id="marketrate21" class="offerpanelelement"></div>
+                    <div id="minlimit21" class="offerpanelelement"></div>
+                    <div id="maxlimit21" class="offerpanelelement"></div>
+                    <div id="TimeToLive21" class="offerpanelelement"></div>
+                </div>
+                <div id="offer2" class="offerpanelitem">
+                    <div id="offerpanelelementname22" class="offerpanelelementname">Customer</div>
+                    <div id="firstcurrency22" class="offerpanelelement"></div>
+                    <div id="secondcurrency22" class="offerpanelelement"></div>
+                    <div id="rate22" class="offerpanelelement"></div>
+                    <div id="amount22" class="offerpanelelement"></div>
+                    <div id="marketrate22" class="offerpanelelement"></div>
+                    <div id="minlimit22" class="offerpanelelement"></div>
+                    <div id="maxlimit22" class="offerpanelelement"></div>
+                    <div id="TimeToLive22" class="offerpanelelement"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        </div>
+    
 </body>
 </html>
 

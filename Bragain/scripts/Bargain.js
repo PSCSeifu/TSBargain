@@ -3,6 +3,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+///<reference path = "/scripts/jquery-2.2.3.js"/>
+var surfaceCount = 2;
+var panelCount = 2;
+var itemCount = 2;
+var marketrate = 0.36;
 var IOffer = (function () {
     function IOffer() {
     }
@@ -75,10 +80,6 @@ var VendorOffer = (function (_super) {
             this.maxLimit = maxLimit;
             this.minLimit = minLimit;
             this.rate = rate;
-            alert('Vendor ttl : ' + this.timeToLive.toString() +
-                '  Vendor rate : ' + this.rate.toString() +
-                '  Vendor Max Limit : ' + this.maxLimit.toString() +
-                '  Vendor Min Limit : ' + this.minLimit.toString());
         }
         else {
             alert(' Error Amount is defined for Vendor.');
@@ -97,13 +98,6 @@ var CustomerOffer = (function (_super) {
             this.Amount = amount;
             this.rate = rate;
             this.rate = rate;
-            alert('Customer ttl : ' + this.timeToLive.toString() +
-                ' Customer rate : ' + this.rate.toString() +
-                ' Customer Amount : ' + this.Amount.toString() +
-                '*****************' +
-                ' Vendor rate : ' + this.rate.toString() +
-                '  Vendor Max Limit : ' + this.maxLimit.toString() +
-                '  Vendor Min Limit : ' + this.minLimit.toString());
         }
         else {
             alert(' Error Min Limit is defined for Customer.');
@@ -116,23 +110,114 @@ window.onload = function () {
     var oo = new Offer(0, 1, 2, 'Live', 'Bitcoin', 'Ethereum', 0.25, 0.28, 'medium', 0.1, 0, 0, 0, 500, 3600, 6);
     var vo = new VendorOffer(oo, 1);
     var co = new CustomerOffer(vo, 256, 0.25, 3600);
-    vo.createOffer(vo.rate, vo.timeToLive, undefined, vo.minLimit, vo.maxLimit);
+    //vo.createOffer(vo.rate, vo.timeToLive, undefined, vo.minLimit, vo.maxLimit);
     //ShowVendorPublicOffer(vo.firstCurrency, vo.secondCurrency, vo.rate, vo.marketRate, vo.minLimit, vo.maxLimit, vo.timeToLive);
-    ShowVendorPublicOffer(vo);
-    alert('before bid');
+    //ShowVendorPublicOffer(vo);
+    //alert('before bid');
+    document.getElementById("cs").onclick = function () {
+        Blurt();
+        CreateCommerceSurface(String(surfaceCount));
+        alert('Commerce surface');
+    };
+    //vendor offer
+    document.getElementById("pb").onclick = function () {
+        //Blurt();
+        //CreatePanelItem(panelCount, itemCount, String(surfaceCount));
+        PopulateVendorOffer(21, vo);
+    };
+    //Customer offer
     document.getElementById("co").onclick = function () {
-        document.title = "Bidding";
-        var customerRate = 0.145;
-        var cAmount = 369;
-        var cttl = 7200;
-        document.getElementById("cmrate").value = marketrate;
-        document.getElementById("crate").value = customerRate.toString();
-        document.getElementById("camount").value = cAmount.toString();
-        ;
-        document.getElementById("cttl").value = cttl.toString();
+        //Blurt();
+        //CreatePanelItem(panelCount, itemCount, String(surfaceCount));
+        PopulateCustomerOffer(22, vo);
     };
     //Bid(369, .145, 7200);
 };
+function PopulateVendorOfferT(itemid, vo) {
+    var i = String(itemid);
+    document.getElementById("offerpanelelementname" + i).textContent = "Vendor-" + i;
+    document.getElementById("firstcurrency" + i).value = vo.firstCurrency;
+    document.getElementById("secondcurrency" + i).value = vo.secondCurrency;
+    document.getElementById("rate" + i).textContent = vo.rate.toString();
+    document.getElementById("amount" + i).textContent = "";
+    document.getElementById("marketrate" + i).textContent = marketrate.toString();
+    document.getElementById("minlimit" + i).textContent = vo.minLimit.toString();
+    document.getElementById("maxlimit" + i).textContent = vo.maxLimit.toString();
+    document.getElementById("TimeToLive" + i).textContent = vo.timeToLive.toString();
+}
+;
+function Blurt() {
+    alert("Working");
+}
+;
+function ResultToggle() {
+    var toggleButton = document.getElementById('#toggleButton');
+    var panel = document.getElementById('#example');
+    toggleButton.onclick = function () {
+        panel.hidden = true;
+    };
+}
+;
+function PopulateVendorOffer(itemid, vo) {
+    var i = String(itemid);
+    document.getElementById("offerpanelelementname" + i).textContent = "Vendor-" + i;
+    document.getElementById("firstcurrency" + i).textContent = vo.firstCurrency;
+    document.getElementById("secondcurrency" + i).textContent = vo.secondCurrency;
+    document.getElementById("rate" + i).textContent = vo.rate.toString();
+    document.getElementById("amount" + i).textContent = "";
+    document.getElementById("marketrate" + i).textContent = marketrate.toString();
+    document.getElementById("minlimit" + i).textContent = vo.minLimit.toString();
+    document.getElementById("maxlimit" + i).textContent = vo.maxLimit.toString();
+    document.getElementById("TimeToLive" + i).textContent = vo.timeToLive.toString();
+}
+;
+function PopulateCustomerOffer(itemid, vo) {
+    var i = String(itemid);
+    var fc = 'Bitcoin';
+    var sc = 'Ethereum';
+    var offerrate = 0.34;
+    var customerRate = 0.145;
+    var cAmount = 369;
+    var cttl = 7200;
+    document.getElementById("offerpanelelementname" + i).textContent = "Customer-" + i;
+    document.getElementById("firstcurrency" + i).textContent = vo.firstCurrency;
+    document.getElementById("secondcurrency" + i).textContent = vo.secondCurrency;
+    document.getElementById("rate" + i).textContent = customerRate.toString();
+    document.getElementById("amount" + i).textContent = cAmount.toString();
+    document.getElementById("marketrate" + i).textContent = marketrate.toString();
+    document.getElementById("minlimit" + i).textContent = vo.minLimit.toString();
+    document.getElementById("maxlimit" + i).textContent = vo.maxLimit.toString();
+    document.getElementById("TimeToLive" + i).textContent = cttl.toString();
+}
+;
+function CreateCommerceSurface(surfaceid) {
+    surfaceCount++;
+    //var html = document.createElement(' <div id ="surface' + surfaceid + '"class="commercesurface"></div>');
+    var html = document.createElement(' <div id ="surface1"class="commercesurface"></div>');
+    document.getElementById("main").appendChild(html);
+}
+;
+function CreatePanelItem(panelid, itemid, surfaceid) {
+    var p = String(panelid);
+    var i = String(itemid);
+    var html = '<div id="offerpanel" class="offerpanel" >'
+        + '< div id= "offer' + p + ' " class="offerpanelitem" >' +
+        +'< div id="offerpanelelementname' + p + i + '" class="offerpanelelementname" > Vendor < /div>' +
+        +'< div id= "firstcurrency' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< div id= "secondcurrency' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< div id= "rate' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< div id= "amount' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< div id= "marketrate' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< div id= "minlimit' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< div id= "maxlimit' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< div id= "TimeToLive' + p + i + '" class="offerpanelelement" > </div>' +
+        +'< /div>'
+        + '< /div>';
+    var child = document.createElement(html);
+    document.getElementById(surfaceid).appendChild(child);
+    panelCount++;
+    itemCount++;
+}
 function ShowVendorPublicOffer(vo) {
     document.title = "Changed";
     document.getElementById("firstcurrency").value = vo.firstCurrency;
@@ -153,10 +238,12 @@ function ShowublicOffer(fc, sc, rate, mrate, min, max, ttl) {
     document.getElementById("maxlimit").value = max;
     document.getElementById("ttl").value = ttl;
 }
-function Bid(amount, rate, ttl) {
+function Bid(marketrate, amount, rate, ttl) {
     document.title = "Bidding";
-    document.getElementById("crate").value = rate(document.getElementById("camount")).value = amount;
-    document.getElementById("cttl").value = ttl;
+    document.getElementById("cmrate").value = marketrate.toString();
+    document.getElementById("crate").value = rate.toString();
+    document.getElementById("camount").value = amount.toString();
+    document.getElementById("cttl").value = ttl.toString();
 }
 //offerId : 0,
 //      parentId : 1,
@@ -173,4 +260,3 @@ function Bid(amount, rate, ttl) {
 //      maxLimit: 500,
 //      timeToLive: 3600,
 //      bargainLimit :6      
-//# sourceMappingURL=Bargain.js.map

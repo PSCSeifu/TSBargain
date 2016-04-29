@@ -1,0 +1,33 @@
+﻿body {
+}
+.transactions{
+
+}
+
+.transaction{
+     position:relative;
+    background-color: #709f8b;
+    border-radius:8px;
+    border-color: #464141;
+    align-items:stretch;
+    display:table;
+}
+
+.transactionrow{
+    width:500px;
+    height:40px;
+    background-color: #71a2bb;
+    border-radius:8px;
+    border-color: #464141;
+    border: solid 1px;
+    padding:5px;
+    margin:15px;
+    display:table-row;
+}
+.transactionelement{
+     background-color:#b6d0dd;
+    border-radius:5px;
+    border:solid;
+    padding:8px;
+    display:table-cell;  
+}

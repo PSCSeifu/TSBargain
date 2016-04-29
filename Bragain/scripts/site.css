@@ -1,0 +1,48 @@
+
+#main{
+
+}
+
+#controlboard{
+    background-color: #808080;
+    border-radius:5px;
+    border: solid groove;
+}
+.commercesurface{
+    background-color:#ac9b9b;
+    padding:10px;
+    margin:5px;
+}
+.offerpanel{ 
+    width:780px;  
+    position:relative;
+    background-color: #709f8b;
+    border-radius:8px;
+    border-color: #464141;
+    display:table;
+}
+.offerpanelitem{
+    width:750px;
+    height:40px;
+    background-color: #71a2bb;
+    border-radius:8px;
+    border-color: #464141;
+    border: solid 1px;
+    padding:5px;
+    margin:15px;
+    display:table-row;
+}
+.offerpanelelement{
+    background-color:#b6d0dd;
+    border-radius:5px;
+    border:solid;
+    padding:8px;
+    display:table-cell;    
+}
+ .offerpanelelementname{
+    background-color:#d7c149;
+    border-radius:5px;
+    border:solid;
+    padding:8px;
+    display:table-cell; 
+}
